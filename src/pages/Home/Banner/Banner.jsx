@@ -16,10 +16,10 @@ const Banner = () => {
                 <div className="absolute  h-full flex items-center  left-0 top-0 bg-gradient-to-r from-[#151515] to-[rgba(21, 21, 21, 0)]">
 
                     <div className="text-white space-y-7 w-1/2 pl-12">
-                        <h2 className="text-6xl font-bold">Affordable Price For Car Servicing</h2>
+                        <h2 className="text-5xl lg:text-6xl  font-bold">Affordable Price For Car Servicing</h2>
                         <p>There are many variations of passages of  available, but the majority have suffered alteration in some form</p>
-                        <div>
-                            <button className="btn btn-error mr-5">Discover More</button>
+                        <div className="flex flex-col lg:flex-row gap-5"> 
+                            <button className="btn btn-error ">Discover More</button>
 
                             <button className="btn btn-outline btn-accent">Latest Project</button>
                         </div>
@@ -39,10 +39,10 @@ const Banner = () => {
                 <div className="absolute  h-full flex items-center  left-0 top-0 bg-gradient-to-r from-[#151515] to-[rgba(21, 21, 21, 0)]">
 
                     <div className="text-white space-y-7 w-1/2 pl-12">
-                        <h2 className="text-6xl font-bold">Affordable Price For Car Servicing</h2>
+                        <h2 className="text-5xl lg:text-6xl font-bold">Affordable Price For Car Servicing</h2>
                         <p>There are many variations of passages of  available, but the majority have suffered alteration in some form</p>
-                        <div>
-                            <button className="btn btn-error mr-5">Discover More</button>
+                        <div className="flex flex-col lg:flex-row gap-5">
+                            <button className="btn btn-error ">Discover More</button>
 
                             <button className="btn btn-outline btn-accent">Latest Project</button>
                         </div>
@@ -64,10 +64,10 @@ const Banner = () => {
                 <div className="absolute  h-full flex items-center  left-0 top-0 bg-gradient-to-r from-[#151515] to-[rgba(21, 21, 21, 0)]">
 
                     <div className="text-white space-y-7 w-1/2 pl-12">
-                        <h2 className="text-6xl font-bold">Affordable Price For Car Servicing</h2>
+                        <h2 className="text-5xl lg:text-6xl font-bold">Affordable Price For Car Servicing</h2>
                         <p>There are many variations of passages of  available, but the majority have suffered alteration in some form</p>
-                        <div>
-                            <button className="btn btn-error mr-5">Discover More</button>
+                        <div className="flex flex-col lg:flex-row gap-5">
+                            <button className="btn btn-error ">Discover More</button>
 
                             <button className="btn btn-outline btn-accent">Latest Project</button>
                         </div>
@@ -89,10 +89,10 @@ const Banner = () => {
                 <div className="absolute  h-full flex items-center  left-0 top-0 bg-gradient-to-r from-[#151515] to-[rgba(21, 21, 21, 0)]">
 
                     <div className="text-white space-y-7 w-1/2 pl-12">
-                        <h2 className="text-6xl font-bold">Affordable Price For Car Servicing</h2>
+                        <h2 className="text-5xl lg:text-6xl font-bold">Affordable Price For Car Servicing</h2>
                         <p>There are many variations of passages of  available, but the majority have suffered alteration in some form</p>
-                        <div>
-                            <button className="btn btn-error mr-5">Discover More</button>
+                        <div className="flex flex-col lg:flex-row gap-5">
+                            <button className="btn btn-error ">Discover More</button>
 
                             <button className="btn btn-outline btn-accent">Latest Project</button>
                         </div>
