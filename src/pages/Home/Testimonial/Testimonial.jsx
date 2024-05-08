@@ -43,7 +43,7 @@ const Testimonial = () => {
     {
       "id": 6,
       "author_name": "Sarah Johnson",
-      "author_img": "https://i.ibb.co/GJ2x4QT/download-1.jpg",
+      "author_img": "https://i.ibb.co/FYHd3nc/images-1.jpg",
       "post_name": "Healthy Living",
       "description": "Nurture your body, mind, and soul with Sarah Johnson, a holistic wellness coach, as she shares her wisdom and practical tips for embracing a balanced and fulfilling lifestyle. From nutritious recipes to invigorating workouts and mindfulness practices, embark on a journey toward optimal health, vitality, and happiness with Sarah as your guide."
     },
