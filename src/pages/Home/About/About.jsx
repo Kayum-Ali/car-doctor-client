@@ -21,6 +21,7 @@ const About = () => {
                 <button className="bg-[#FF3811] px-4 py-2 mt-5 text-white rounded-xl">Get More Info</button>
             </div>
             
+            
         </div>
     );
 };
