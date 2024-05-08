@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 
 const NavBar = () => {
-    const logo = 'https://i.ibb.co/Tvt4mnX/Group-2.png'
+    const logo = 'https://i.ibb.co/PcV18rt/Group-2.png'
     const navItem = <>
     <li><Link to='/'>Home</Link></li>
     <li><Link to='/about'>About</Link></li>

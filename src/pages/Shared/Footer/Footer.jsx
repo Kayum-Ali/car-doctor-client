@@ -2,7 +2,7 @@
 
 const Footer = () => {
 
-    const logo = 'https://i.ibb.co/Tvt4mnX/Group-2.png'
+    const logo = 'https://i.ibb.co/PcV18rt/Group-2.png'
     return (
         <footer className="footer p-10 bg-base-200 text-base-content">
             <aside>

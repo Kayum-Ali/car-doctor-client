@@ -6,12 +6,12 @@ import { AuthCoontext } from "../../Context/AuthContext";
 
 const SignUp = () => {
 
-    const img = 'https://i.ibb.co/F3F0wRC/Frame.png';
+    const img = 'https://i.ibb.co/4pdK1mZ/Frame.png';
 
 
     const {createUser} = useContext(AuthCoontext)
 
-    const handleLogin = (e)=>{
+    const handleSignUp = (e)=>{
 
         e.preventDefault();
         const form = e.target;
@@ -26,7 +26,7 @@ const SignUp = () => {
             const user = result.user;
             console.log(user)
         })
-        .then(error => console.log(error))
+        .catch(error => console.log(error))
        
     }
     return (
@@ -39,7 +39,7 @@ const SignUp = () => {
 
                 <div className="card shrink-0 w-[610px] h-[780px] border shadow-2xl bg-base-100 p-12">
                 <h2 className="text-3xl font-bold text-center">Sign Up</h2>
-                    <form onSubmit={handleLogin} className="card-body">
+                    <form onSubmit={handleSignUp} className="card-body">
                       
                         <div className="form-control">
                             <label className="label">

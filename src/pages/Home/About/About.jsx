@@ -1,7 +1,7 @@
 
 
 const About = () => {
-    const img1= 'https://i.ibb.co/smKqHq7/person.jpg'
+    const img1= 'https://i.ibb.co/DfX4mN2/person.jpg'
     const img2= 'https://i.ibb.co/xzfNjKf/parts.jpg'
     return (
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 my-14 py-10">

@@ -2,12 +2,12 @@
 
 const Banner = () => {
 
-    const img1 = 'https://i.ibb.co/xHytvLN/1.jpg';
-    const img2 = 'https://i.ibb.co/TKM0pwy/2.jpg';
+    const img1 = 'https://i.ibb.co/sWN7Xxp/1.jpg';
+    const img2 = 'https://i.ibb.co/9vvRLs0/2.jpg';
     // const img3 = 'https://i.ibb.co/R9Xqfrm/3.jpg';
     // const img4 = 'https://i.ibb.co/Jy5gvFF/4.jpg';
-    const img5 = 'https://i.ibb.co/RgK7F6m/5.jpg';
-    const img6 = 'https://i.ibb.co/d6Nr0H8/6.jpg';
+    const img5 = 'https://i.ibb.co/9n3TM3k/5.jpg';
+    const img6 = 'https://i.ibb.co/RQBk8qL/6.jpg';
     return (
         <div className="carousel w-full h-[600px] rounded-xl scroll-smooth">
 
