@@ -13,7 +13,7 @@ const About = () => {
             {/* content div */}
             <div className="col-span-7 ml-5 px-5">
                 <p className="text-red-500 font-medium mb-5">About us</p>
-                <h1 className="font-bold text-3xl lg:text-5xl lg:w-[376px] ">We are qualified & of experience in this field</h1>
+                <h1 className="font-bold text-3xlnpm run dev  lg:text-5xl lg:w-[376px] ">We are qualified & of experience in this field</h1>
                 <p className=" mt-8  lg:w-[489px] opacity-80 font-medium ml-3">There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which dont look even slightly believable. </p>
 
                 <p className="mt-8 lg:w-[489px] opacity-80 font-medium ml-3">the majority have suffered alteration in some form, by injected humour, or randomised words which dont look even slightly believable. </p>
