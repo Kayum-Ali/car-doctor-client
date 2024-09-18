@@ -1,4 +1,4 @@
-import pt from 'prop-types'
+import propTypes from 'prop-types'
 
 const Product = ({ product }) => {
     const { title, img, price } = product;
@@ -25,8 +25,9 @@ const Product = ({ product }) => {
         </div>
     );
 };
+
 Product.propTypes = {
-    product: pt.object.isRequired,
+    product: propTypes.object.isRequired
 }
 
 export default Product;

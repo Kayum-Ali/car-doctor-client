@@ -1,5 +1,6 @@
 import { useContext } from "react";
 import { Link } from "react-router-dom";
+import './Login.css'
 import { AuthCoontext } from "../../Context/AuthContext";
 
 
@@ -30,7 +31,7 @@ const Login = () => {
                 </div>
 
                 <div className="card shrink-0 w-[610px] h-[780px] border shadow-2xl bg-base-100 p-12">
-                <h2 className="text-3xl font-bold text-center">Login</h2>
+                <h2 className="text-3xl font-bold text-center selection:bg-pink-300 selection:text-green-300">Login</h2>
                     <form onSubmit={handleLogin} className="card-body">
                       
                         <div className="form-control">
@@ -41,9 +42,9 @@ const Login = () => {
                         </div>
                         <div className="form-control">
                             <label className="label">
-                                <span className="label-text  text-xl font-medium">Confirm Password</span>
+                                <span className="label-text  text-xl font-medium ">Confirm Password</span>
                             </label>
-                            <input type="password" name='password' placeholder="Your password" className="input input-bordered" required />
+                            <input type="password" name='password' placeholder="Your password" className="input input-bordered placeholder-cyan-500" required />
                             <label className="label">
                                 <a href="#" className="label-text-alt link link-hover">Forgot password?</a>
                             </label>

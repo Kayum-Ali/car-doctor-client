@@ -15,7 +15,7 @@ const ChooseUs = () => {
                 <h2 className="text-5xl font-bold">Why Choose Us</h2>
                 <p className="lg:w-[700px] mx-auto opacity-80 font-medium">the majority have suffered alteration in some form, by injected humour, or randomised words which dont look even slightly believable.   </p>
             </div>
-            <div className="grid grid-cols-3 lg:grid-cols-6  gap-5 my-8 ">
+            <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6  gap-5 my-8 ">
                 <div className="border rounded-xl p-8 hover:bg-[#FF3811] hover:text-white mx-auto  flex flex-col justify-center items-center">
                     <img className=" lg:w-[75px]    rounded-xl" src={img1} alt="" />
                     <p  className="mt-3">Expert Team</p>
