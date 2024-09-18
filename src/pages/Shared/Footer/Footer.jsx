@@ -5,7 +5,7 @@ import { BsInstagram } from "react-icons/bs";
 
 const Footer = () => {
 
-    const logo = 'https://i.ibb.co/PcV18rt/Group-2.png'
+    const logo = 'https://res.cloudinary.com/dqescabbl/image/upload/v1726672802/Group_2_beaneu.png'
     return (
         <footer className="footer p-10 bg-[#151515] text-white">
             <aside>
