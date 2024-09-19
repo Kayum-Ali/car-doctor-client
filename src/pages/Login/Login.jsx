@@ -1,5 +1,5 @@
 import { useContext } from "react";
-import { Link,  useNavigate,  } from "react-router-dom";
+import { Link,  useLocation,  useNavigate,  } from "react-router-dom";
 import './Login.css'
 import { AuthCoontext } from "../../Context/AuthContext";
 import Swal from "sweetalert2";
@@ -9,6 +9,10 @@ const Login = () => {
     const img = 'https://i.ibb.co/4pdK1mZ/Frame.png';
     document.title = 'Login';
     const navigate = useNavigate()
+    const location = useLocation()
+
+    const from = location?.state ? location?.state : "/";
+  
 
     const {signIn} = useContext(AuthCoontext)
 
@@ -20,8 +24,8 @@ const Login = () => {
         signIn(email,password)
         .then(result =>{
             form.reset()
-            {
-                result.user && navigate('/')
+            if (result.user) {
+                navigate(from);
             }
             let timerInterval;
             Swal.fire({
@@ -51,14 +55,14 @@ const Login = () => {
     }
 
     return (
-        <div className="hero ">
-            <div className="hero-content flex-col lg:flex-row">
-                <div className="">
-                    <img src={img} alt="" />
+        <div className="px-5 lg:px-0">
+            <div className="flex flex-col lg:flex-row md:flex-row">
+                <div className="flex-1">
+                    <img className="mx-auto w-72 lg:w-auto" src={img} alt="" />
                    
                 </div>
 
-                <div className="card shrink-0 w-[610px] h-[780px] border shadow-2xl bg-base-100 p-12">
+                <div className="card shrink-0 lg:w-[610px] md:w-max w-max mx-auto h-[580px] border shadow-2xl bg-base-100 p-12 pb-5 my-5">
                 <h2 className="text-3xl font-bold text-center selection:bg-pink-300 selection:text-green-300">Login</h2>
                     <form onSubmit={handleLogin} className="card-body">
                       

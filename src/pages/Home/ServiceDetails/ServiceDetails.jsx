@@ -1,10 +1,15 @@
+
 import { FaArrowRightLong } from "react-icons/fa6";
 import { PiSimCardDuotone } from "react-icons/pi";
-import { Link, useLoaderData } from "react-router-dom";
+import { Link,  useLoaderData, useLocation } from "react-router-dom";
+
 
 
 const ServiceDetails = () => {
   const data = useLoaderData();
+
+  const location = useLocation()
+  console.log(location.pathname, location)
 
 
  
@@ -167,9 +172,11 @@ const ServiceDetails = () => {
 
           <div className="p-3">
              <h2 className="text-4xl font-bold">Price : ${data.price}</h2>
-           <Link to={`/checkout/${data._id}`}>
-               <button className="bg-[#FF3811] py-2.5 text-white font-bold w-full rounded-xl mt-3">Proceed Checkout</button>
-           </Link>
+          
+             <Link to={`/checkout/${data._id}`}>
+            <button className="bg-[#FF3811] py-2.5 text-white font-bold w-full rounded-xl mt-3">Proceed Checkout</button>
+            </Link>  
+          
                 
           </div>
         </div>
