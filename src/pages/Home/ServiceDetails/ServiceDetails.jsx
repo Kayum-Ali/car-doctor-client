@@ -7,9 +7,10 @@ const ServiceDetails = () => {
   const data = useLoaderData();
 
 
-  console.log(data);
+ 
   const img =
     "https://res.cloudinary.com/dqescabbl/image/upload/v1726651366/4_ksehgy.jpg";
+    document.title= `Service Details || ${data.title}`
 
   const style = {
     backgroundColor: "red",

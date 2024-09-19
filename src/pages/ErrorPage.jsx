@@ -4,6 +4,7 @@ import Footer from "./Shared/Footer/Footer";
 
 
 const ErrorPage = () => {
+    document.title = "Not Found";
     return (
         <div className="">
             <NavBar></NavBar>

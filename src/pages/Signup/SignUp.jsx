@@ -7,6 +7,7 @@ import { AuthCoontext } from "../../Context/AuthContext";
 const SignUp = () => {
 
     const img = 'https://i.ibb.co/4pdK1mZ/Frame.png';
+    document.title = 'Sign Up'
 
 
     const {createUser} = useContext(AuthCoontext)
