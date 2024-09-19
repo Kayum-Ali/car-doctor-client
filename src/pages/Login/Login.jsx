@@ -1,12 +1,14 @@
 import { useContext } from "react";
-import { Link } from "react-router-dom";
+import { Link,  useNavigate,  } from "react-router-dom";
 import './Login.css'
 import { AuthCoontext } from "../../Context/AuthContext";
+import Swal from "sweetalert2";
 
 
 const Login = () => {
     const img = 'https://i.ibb.co/4pdK1mZ/Frame.png';
     document.title = 'Login';
+    const navigate = useNavigate()
 
     const {signIn} = useContext(AuthCoontext)
 
@@ -17,8 +19,33 @@ const Login = () => {
         const password = form.password.value;
         signIn(email,password)
         .then(result =>{
-            const user = result.user;
-            console.log(user)
+            form.reset()
+            {
+                result.user && navigate('/')
+            }
+            let timerInterval;
+            Swal.fire({
+              title: "Login Successfully",
+              html: "I will close in <b></b> milliseconds.",
+              timer: 2000,
+              timerProgressBar: true,
+              didOpen: () => {
+                Swal.showLoading();
+                const timer = Swal.getPopup().querySelector("b");
+                timerInterval = setInterval(() => {
+                  timer.textContent = `${Swal.getTimerLeft()}`;
+                }, 100);
+              },
+              willClose: () => {
+                clearInterval(timerInterval);
+              }
+            }).then((result) => {
+              /* Read more about handling dismissals below */
+              if (result.dismiss === Swal.DismissReason.timer) {
+                console.log("I was closed by the timer");
+              }
+            });
+           
         })
         .catch(error => console.log(error))
     }

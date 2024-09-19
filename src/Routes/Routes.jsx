@@ -7,6 +7,8 @@ import ErrorPage from "../pages/ErrorPage";
 
 import ServiceDetails from "../pages/Home/ServiceDetails/ServiceDetails";
 import Chekout from "../pages/Checkout/Chekout";
+import MyBookings from "../pages/MyBookings/MyBookings";
+import PrivateRoute from "./PrivateRoute";
 
 const router = createBrowserRouter([
     {
@@ -35,6 +37,10 @@ const router = createBrowserRouter([
         path: '/checkout/:_id',
         element: <Chekout></Chekout>,
         loader: ({params})=> fetch(`http://localhost:5000/checkout/${params._id}`)
+       },
+       {
+        path: '/my-bookings',
+        element: <PrivateRoute> <MyBookings></MyBookings></PrivateRoute>
        }
       ]
     },
