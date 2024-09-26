@@ -9,7 +9,7 @@ import Testimonial from "../Testimonial/Testimonial";
 
 const Home = () => {
     window.scrollTo(0,0)
-    document.title = "Car Doctor"
+    document.title = "Mechanic"
     return (
         <div>
            

@@ -77,7 +77,7 @@ console.log(service)
         <form onSubmit={handleSubmit} className="grid grid-cols-1 lg:grid-cols-12 md:grid-cols-12 gap-5">
             <div className="lg:col-span-6 md:col-span-6 ">
                 <label htmlFor="" className="px-2 py-4 block  text-2xl">Name</label>
-                 <input type="text" required placeholder="Name" name="name" className="outline-none px-5 py-4 text-xl bg-white rounded-xl w-full" />
+                 <input type="text" required placeholder="Name" name="name" defaultValue={user?.displayName} className="outline-none px-5 py-4 text-xl bg-white rounded-xl w-full" />
             </div>
             <div className="lg:col-span-6 md:col-span-6">
             <label htmlFor="" className="px-2 py-4 block  text-2xl">Date</label>
@@ -85,7 +85,7 @@ console.log(service)
             </div>
             <div className="lg:col-span-6 md:col-span-6">
             <label htmlFor="" className="px-2 py-4 block  text-2xl">Email</label>
-                 <input type="email"  placeholder="Email" defaultValue={user?.email} name="email" className="outline-none px-5 py-4 text-xl bg-white rounded-xl w-full" />
+                 <input type="email"  placeholder="Email" defaultValue={user?.email} readOnly name="email" className="outline-none px-5 py-4 text-xl bg-white rounded-xl w-full" />
             </div>
             <div className="lg:col-span-6 md:col-span-6">
             <label htmlFor="" className="px-2 py-4 block  text-2xl">Due Amount</label>

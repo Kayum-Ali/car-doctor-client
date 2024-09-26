@@ -4,9 +4,10 @@ import { AuthCoontext } from "../../../Context/AuthContext";
 import Swal from "sweetalert2";
 
 const NavBar = () => {
-  const logo = "https://i.ibb.co/PcV18rt/Group-2.png";
+  const logo = "https://res.cloudinary.com/dqescabbl/image/upload/v1727326954/vecteezy_gear-mechanic-logo_7688915-1_vwejud.jpg";
 
   const { user, logout } = useContext(AuthCoontext);
+
   const handleLogout = () => {
     logout()
       .then(() => {
@@ -19,7 +20,7 @@ const NavBar = () => {
         });
       })
       .catch((error) => {
-        console.error("Error logging out:", error);
+        console.log("Error logging out:", error.message);
       });
   };
   const navItem = (
@@ -45,7 +46,7 @@ const NavBar = () => {
             <Link to={`/my-bookings`}>My Bookings</Link>
           </li>
           <li onClick={handleLogout}>
-            <Link>Logout</Link>
+           <p>Logout</p>
           </li>
         </>
       ) : (
@@ -83,7 +84,7 @@ const NavBar = () => {
           </ul>
         </div>
         <Link to="/">
-          <img className="w-[100px]" src={logo} alt="" />
+          <img className="w-[150px]" src={logo} alt="" />
         </Link>
       </div>
       <div className="navbar-center hidden lg:flex">
@@ -96,9 +97,9 @@ const NavBar = () => {
         {user ? (
           <Link to={`/user/${user.uid}`}>
             <div className="tooltip z-20 tooltip-left" data-tip={user.email}>
-              <img
+            <img
                 className="avatar w-16 rounded-full"
-                src="https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.webp"
+                src={`${user.photoURL ? user.photoURL : 'https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.webp'}`}
               />
             </div>
           </Link>

@@ -1,8 +1,11 @@
 import { useContext } from "react";
-import { Link,  useLocation,  useNavigate,  } from "react-router-dom";
+import { Link, useLocation, useNavigate,  } from "react-router-dom";
 import './Login.css'
 import { AuthCoontext } from "../../Context/AuthContext";
 import Swal from "sweetalert2";
+import axios from "axios";
+import { FcGoogle } from "react-icons/fc";
+import { VscGithubInverted } from "react-icons/vsc";
 
 
 const Login = () => {
@@ -14,19 +17,27 @@ const Login = () => {
     const from = location?.state ? location?.state : "/";
   
 
-    const {signIn} = useContext(AuthCoontext)
+    const {signIn, googleLogin,githubLogin} = useContext(AuthCoontext)
 
     const handleLogin = (e)=>{
         e.preventDefault();
         const form = e.target;
         const email = form.email.value;
         const password = form.password.value;
+
         signIn(email,password)
-        .then(result =>{
+        .then(() =>{
+          
             form.reset()
-            if (result.user) {
-                navigate(from);
-            }
+            // get access token from server
+            const user = {email};
+            axios.post('http://localhost:5000/jwt', user, {withCredentials:true} )
+            .then(data =>{
+                if(data.data.success){
+                    navigate(from);
+                }
+            })
+          
             let timerInterval;
             Swal.fire({
               title: "Login Successfully",
@@ -54,6 +65,42 @@ const Login = () => {
         .catch(error => console.log(error))
     }
 
+    const handleGoogleLogin = ()=>{
+        googleLogin()
+       .then(result=>{
+           if(result.user){
+             navigate(from);
+             Swal.fire({
+                 title: "Login Successfully",
+                 html: "I will close in <b></b> milliseconds.",
+                 timer: 2000,
+                 timerProgressBar: true,
+                
+             })
+           }
+       })
+       .catch(error => console.log(error))
+       
+    }
+
+    const handleGithubLogin= ()=>{
+
+        githubLogin()
+        .then(result=>{
+            if(result.user){
+                navigate(from);
+                Swal.fire({
+                    title: "Login Successfully",
+                    html: "I will close in <b></b> milliseconds.",
+                    timer: 2000,
+                    timerProgressBar: true,
+                })
+            }
+        })
+
+        
+    }
+    
     return (
         <div className="px-5 lg:px-0">
             <div className="flex flex-col lg:flex-row md:flex-row">
@@ -62,7 +109,7 @@ const Login = () => {
                    
                 </div>
 
-                <div className="card shrink-0 lg:w-[610px] md:w-max w-max mx-auto h-[580px] border shadow-2xl bg-base-100 p-12 pb-5 my-5">
+                <div className="card shrink-0 lg:w-[610px] md:w-max w-max mx-auto h-[680px] border shadow-2xl bg-base-100 p-12 pb-5 my-5">
                 <h2 className="text-3xl font-bold text-center selection:bg-pink-300 selection:text-green-300">Login</h2>
                     <form onSubmit={handleLogin} className="card-body">
                       
@@ -88,6 +135,12 @@ const Login = () => {
                             <p className="mt-5 text-center ">New to Cars Doctors? <Link className="text-orange-600 font-bold hover:underline" to='/signup'>Sign Up</Link></p>
                         </div>
                     </form>
+                    <h2 className="text-center font-medium">Or Login with</h2>
+
+                    <div className="flex gap-5 justify-center py-10">
+                        <button onClick={handleGoogleLogin} className="btn text-2xl flex items-center"> <FcGoogle /> Google</button>
+                        <button onClick={handleGithubLogin} className="btn text-2xl flex items-center"> <VscGithubInverted /> Github</button>
+                    </div>
                     
                 </div>
             </div>

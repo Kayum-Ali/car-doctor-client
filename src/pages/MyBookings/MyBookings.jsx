@@ -2,20 +2,26 @@ import { useContext, useEffect, useState } from "react";
 import { AuthCoontext } from "../../Context/AuthContext";
 import BookingRow from "./BookingRow";
 import Swal from "sweetalert2";
+import axios from "axios";
 
 const MyBookings = () => {
   const img ="https://res.cloudinary.com/dqescabbl/image/upload/v1726651366/4_ksehgy.jpg";
   const { user } = useContext(AuthCoontext);
   const [bookings, setBookings] = useState([]);
+  const url = `http://localhost:5000/bookings?email=${user?.email}` ;
   useEffect(() => {
-    fetch(`http://localhost:5000/bookings?email=${user.email}&sort=1`)
-      .then((res) => res.json())
-      .then((data) => {
-        setBookings(data);
-        console.log(typeof data[0].price);
-        console.log(data[0].price);
-      });
-  }, []);
+    axios.get(url, {withCredentials: true})
+    .then(res =>{
+      setBookings(res.data)
+    })
+    // fetch(`http://localhost:5000/bookings?email=${user.email}&sort=1`)
+    //   .then((res) => res.json())
+    //   .then((data) => {
+    //     setBookings(data);
+    //     console.log(typeof data[0].price);
+    //     console.log(data[0].price);
+    //   });
+  }, [url]);
 
   const style = {
     backgroundColor: "red",
@@ -88,7 +94,7 @@ const MyBookings = () => {
           </thead>
           <tbody>
               {
-                bookings.map((booking) => <BookingRow key={booking._id} booking={booking} handleDelete={handleDelete}></BookingRow>)
+                bookings?.map((booking) => <BookingRow key={booking._id} booking={booking} handleDelete={handleDelete}></BookingRow>)
               }
           </tbody>
          
