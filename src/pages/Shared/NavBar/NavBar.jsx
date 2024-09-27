@@ -7,6 +7,7 @@ const NavBar = () => {
   const logo = "https://res.cloudinary.com/dqescabbl/image/upload/v1727326954/vecteezy_gear-mechanic-logo_7688915-1_vwejud.jpg";
 
   const { user, logout } = useContext(AuthCoontext);
+  console.log(user?.photoURL)
 
   const handleLogout = () => {
     logout()
@@ -32,7 +33,7 @@ const NavBar = () => {
         <Link to="/about">About</Link>
       </li>
       <li>
-        <Link to="/services">Services</Link>
+        <Link to="/services">Add Services</Link>
       </li>
       <li>
         <Link to="/blog">Blog</Link>
@@ -41,14 +42,12 @@ const NavBar = () => {
         <Link to="/contact">Contact</Link>
       </li>
       {user ? (
-        <>
+        
           <li>
             <Link to={`/my-bookings`}>My Bookings</Link>
           </li>
-          <li onClick={handleLogout}>
-           <p>Logout</p>
-          </li>
-        </>
+          
+       
       ) : (
         <li>
           <Link to="/login">Login</Link>
@@ -94,16 +93,42 @@ const NavBar = () => {
         <button className="btn  btn-outline btn-warning mr-2">
           Appointment
         </button>
-        {user ? (
-          <Link to={`/user/${user.uid}`}>
-            <div className="tooltip z-20 tooltip-left" data-tip={user.email}>
-            <img
-                className="avatar w-16 rounded-full"
-                src={`${user.photoURL ? user.photoURL : 'https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.webp'}`}
-              />
+         
+          <div className="dropdown dropdown-end " >
+          <div tabIndex={0} role="button" className="  tooltip z-20 tooltip-left" data-tip={user?.email}>
+            <div  className="w-16"  >
+              {
+              user ? <img 
+               className="avatar w-16 rounded-full"
+                alt="user photo"
+                src={user?.photoURL} /> :
+                <img 
+              className="avatar w-16 rounded-full"
+                alt="user photo"
+                src='https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.webp' />
+                 }
+              
             </div>
-          </Link>
-        ) : null}
+          </div>
+          <ul
+            tabIndex={0}
+            className="menu menu-sm dropdown-content bg-base-100 rounded-box z-30 mt-3 w-52 p-2 shadow">
+            <li>
+              <a className="justify-between">
+                Profile
+                <span className="badge">New</span>
+              </a>
+            </li>
+            <li><a>Settings</a></li>
+            <li onClick={handleLogout}>
+           <p>Logout</p>
+          </li>
+          </ul>
+           </div> 
+        
+       
+       
+
       </div>
     </div>
   );

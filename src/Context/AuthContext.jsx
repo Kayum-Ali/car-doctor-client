@@ -44,7 +44,7 @@ const AuthContext = ({children}) => {
     useEffect(()=>{
         const unSubscriber =   onAuthStateChanged(auth, currentUser =>{
             setUser(currentUser)
-            console.log('currnet user', currentUser)
+            // console.log('currnet user', currentUser)
             setLoading(false)
         })
         return ()=>{

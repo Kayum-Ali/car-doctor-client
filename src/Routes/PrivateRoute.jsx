@@ -10,7 +10,7 @@ import PropTypes from "prop-types";
 // Private route component to protect routes
 const PrivateRoute = ({children}) => {
     const location = useLocation()
-    console.log(location)
+    // console.log(location)
     const {user , loading} = useContext(AuthCoontext)
     if(loading){
         return <span className="loading loading-bars loading-lg flex justify-center items-center mx-auto text-7xl h-14 text-green-400"></span>
