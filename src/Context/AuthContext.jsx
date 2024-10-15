@@ -2,6 +2,7 @@ import { createUserWithEmailAndPassword, getAuth, GithubAuthProvider, GoogleAuth
 import { createContext, useEffect, useState } from "react";
 import app from "../firebase/firebase.config";
 import PropTypes from 'prop-types'; 
+import axios from "axios";
 
 
 export const AuthCoontext = createContext();
@@ -43,14 +44,29 @@ const AuthContext = ({children}) => {
 
     useEffect(()=>{
         const unSubscriber =   onAuthStateChanged(auth, currentUser =>{
+            const userEmail = currentUser?.email || user?.email ;
+            const loggedUser = {email: userEmail}
             setUser(currentUser)
             // console.log('currnet user', currentUser)
             setLoading(false)
+            if(currentUser){
+                axios.post("http://localhost:5000/jwt", loggedUser, {withCreadentials: true})
+                .then(res=>{
+                    console.log('token res', res.data)
+                })
+            }
+            else{
+                axios.post("http://localhost:5000/logout", loggedUser, {withCreadentials: true})
+                .then(res=>{
+                    console.log('token delete', res.data)
+
+                })
+            }
         })
         return ()=>{
             return unSubscriber()
         }
-    },[])
+    },[user])
 
 
 const authInfo = {

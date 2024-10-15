@@ -7,7 +7,7 @@ const NavBar = () => {
   const logo = "https://res.cloudinary.com/dqescabbl/image/upload/v1727326954/vecteezy_gear-mechanic-logo_7688915-1_vwejud.jpg";
 
   const { user, logout } = useContext(AuthCoontext);
-  console.log(user?.photoURL)
+  // console.log(user?.photoURL)
 
   const handleLogout = () => {
     logout()

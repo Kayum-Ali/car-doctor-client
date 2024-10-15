@@ -3,7 +3,7 @@ import { Link, useLocation, useNavigate,  } from "react-router-dom";
 import './Login.css'
 import { AuthCoontext } from "../../Context/AuthContext";
 import Swal from "sweetalert2";
-import axios from "axios";
+
 import { FcGoogle } from "react-icons/fc";
 import { VscGithubInverted } from "react-icons/vsc";
 
@@ -30,13 +30,7 @@ const Login = () => {
           
             form.reset()
             // get access token from server
-            const user = {email};
-            axios.post('http://localhost:5000/jwt', user, {withCredentials:true} )
-            .then(data =>{
-                if(data.data.success){
-                    navigate(from);
-                }
-            })
+           
           
             let timerInterval;
             Swal.fire({
