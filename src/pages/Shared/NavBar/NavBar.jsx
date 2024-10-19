@@ -94,19 +94,13 @@ const NavBar = () => {
           Appointment
         </button>
          
-          <div className="dropdown dropdown-end " >
-          <div tabIndex={0} role="button" className="  tooltip z-20 tooltip-left" data-tip={user?.email}>
+          <div className={`dropdown dropdown-end  ${user || 'hidden'}`} >
+          <div tabIndex={0} role="button" className="tooltip z-20 tooltip-left" data-tip={user?.email}>
             <div  className="w-16"  >
-              {
-              user ? <img 
-               className="avatar w-16 rounded-full"
+              <img 
+               className=" w-16 rounded-full"
                 alt="user photo"
-                src={user?.photoURL} /> :
-                <img 
-              className="avatar w-16 rounded-full"
-                alt="user photo"
-                src='https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.webp' />
-                 }
+                src={user?.photoURL} />
               
             </div>
           </div>

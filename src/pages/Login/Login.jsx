@@ -40,6 +40,7 @@ const Login = () => {
               timerProgressBar: true,
               didOpen: () => {
                 Swal.showLoading();
+                navigate(from);
                 const timer = Swal.getPopup().querySelector("b");
                 timerInterval = setInterval(() => {
                   timer.textContent = `${Swal.getTimerLeft()}`;

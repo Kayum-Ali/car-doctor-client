@@ -44,24 +44,24 @@ const AuthContext = ({children}) => {
 
     useEffect(()=>{
         const unSubscriber =   onAuthStateChanged(auth, currentUser =>{
-            const userEmail = currentUser?.email || user?.email ;
-            const loggedUser = {email: userEmail}
+            // const userEmail = currentUser?.email || user?.email ;
+            // const loggedUser = {email: userEmail}
             setUser(currentUser)
             // console.log('currnet user', currentUser)
             setLoading(false)
-            if(currentUser){
-                axios.post("http://localhost:5000/jwt", loggedUser, {withCreadentials: true})
-                .then(res=>{
-                    console.log('token res', res.data)
-                })
-            }
-            else{
-                axios.post("http://localhost:5000/logout", loggedUser, {withCreadentials: true})
-                .then(res=>{
-                    console.log('token delete', res.data)
+            // if(currentUser){
+            //     axios.post("http://localhost:5000/jwt", loggedUser, {withCreadentials: true})
+            //     .then(res=>{
+            //         console.log('token res', res.data)
+            //     })
+            // }
+            // else{
+            //     axios.post("http://localhost:5000/logout", loggedUser, {withCreadentials: true})
+            //     .then(res=>{
+            //         console.log('token delete', res.data)
 
-                })
-            }
+            //     })
+            // }
         })
         return ()=>{
             return unSubscriber()
