@@ -9,19 +9,16 @@ const MyBookings = () => {
     "https://res.cloudinary.com/dqescabbl/image/upload/v1726651366/4_ksehgy.jpg";
   const { user } = useContext(AuthCoontext);
   const [bookings, setBookings] = useState([]);
-  const url = `http://localhost:5000/bookings?email=${user.email}`;
+  const url = `http://localhost:5000/bookings?email=${user?.email}`
+
   useEffect(() => {
-    axios.get(url).then((res) => {
+    axios.get(url, { withCredentials: true})
+    .then(res => {
+      console.log(res.data)
       setBookings(res.data);
     });
-    // fetch(`http://localhost:5000/bookings?email=${user.email}&sort=1`)
-    //   .then((res) => res.json())
-    //   .then((data) => {
-    //     setBookings(data);
-    //     console.log(typeof data[0].price);
-    //     console.log(data[0].price);
-    //   });
-  }, []);
+  
+  }, [url]);
 
   const style = {
     backgroundColor: "red",

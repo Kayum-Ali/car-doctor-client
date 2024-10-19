@@ -1,10 +1,11 @@
 import { useContext } from "react";
-import {  useLoaderData } from "react-router-dom";
+import {  useLoaderData, useNavigate } from "react-router-dom";
 import { AuthCoontext } from "../../Context/AuthContext";
 import Swal from "sweetalert2";
 
 const Chekout = () => {
   const service = useLoaderData();
+  const navigate = useNavigate()
   document.title = 'car Doctor'+ " || " +'Chekout';
   const img =
     "https://res.cloudinary.com/dqescabbl/image/upload/v1726651366/4_ksehgy.jpg";
@@ -50,6 +51,7 @@ const Chekout = () => {
             imageHeight: 200,
             imageAlt: "Custom image"
           });
+          navigate('/my-bookings')
         }
     })
 

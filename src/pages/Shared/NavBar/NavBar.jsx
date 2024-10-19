@@ -12,6 +12,7 @@ const NavBar = () => {
   const handleLogout = () => {
     logout()
       .then(() => {
+        
         Swal.fire({
           position: "center",
           icon: "success",
@@ -115,7 +116,7 @@ const NavBar = () => {
             </li>
             <li><a>Settings</a></li>
             <li onClick={handleLogout}>
-           <p>Logout</p>
+               <p>Logout</p>
           </li>
           </ul>
            </div> 

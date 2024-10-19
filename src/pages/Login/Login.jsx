@@ -6,6 +6,7 @@ import Swal from "sweetalert2";
 
 import { FcGoogle } from "react-icons/fc";
 import { VscGithubInverted } from "react-icons/vsc";
+import axios from "axios";
 
 
 const Login = () => {
@@ -29,7 +30,14 @@ const Login = () => {
         .then(() =>{
           
             form.reset()
+            const user = email
             // get access token from server
+            axios.post('http://localhost:5000/jwt', {user}, {withCredentials: true})
+            .then(res => {
+               if(res.data.success){
+                navigate(from);
+               }
+            })
            
           
             let timerInterval;
@@ -40,7 +48,7 @@ const Login = () => {
               timerProgressBar: true,
               didOpen: () => {
                 Swal.showLoading();
-                navigate(from);
+               
                 const timer = Swal.getPopup().querySelector("b");
                 timerInterval = setInterval(() => {
                   timer.textContent = `${Swal.getTimerLeft()}`;
@@ -63,8 +71,18 @@ const Login = () => {
     const handleGoogleLogin = ()=>{
         googleLogin()
        .then(result=>{
+        const user = result?.user?.email
+        axios.post('http://localhost:5000/jwt', {user}, {withCredentials: true})
+        .then(res => {
+           if(res.data.success){
+            navigate(from);
+           }
+        })
            if(result.user){
-             navigate(from);
+           
+                // navigate(from);
+            
+           
              Swal.fire({
                  title: "Login Successfully",
                  html: "I will close in <b></b> milliseconds.",
@@ -82,8 +100,15 @@ const Login = () => {
 
         githubLogin()
         .then(result=>{
-            if(result.user){
+            const user = result?.user?.email
+            axios.post('http://localhost:5000/jwt', {user}, {withCredentials: true})
+            .then(res => {
+               if(res.data.success){
                 navigate(from);
+               }
+            })
+            if(result.user){
+                // navigate(from);
                 Swal.fire({
                     title: "Login Successfully",
                     html: "I will close in <b></b> milliseconds.",
