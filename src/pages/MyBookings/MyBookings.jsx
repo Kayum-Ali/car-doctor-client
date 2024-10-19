@@ -59,6 +59,43 @@ const MyBookings = () => {
       }
     });
   };
+
+//   confirmed
+const handleBookingConfirm = (id) =>{
+  Swal.fire({
+    title: "Are you sure?",
+    text: "You want to Confirmed this Service ",
+    icon: "warning",
+    showCancelButton: true,
+    confirmButtonColor: "#3085d6",
+    cancelButtonColor: "#d33",
+    confirmButtonText: "Confirmed"
+  }).then((result) => {
+    if (result.isConfirmed) {
+      fetch(`http://localhost:5000/bookings/${id}`, {
+        method: "PATCH",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ status: 'Confirm' }),
+      })
+      .then(res => res.json())
+      .then(data => {
+        console.log(data)
+        if (data.modifiedCount > 0) {
+          const remaining = bookings.map(booking => booking._id === id? {...booking, status: 'Confirm' } : booking)
+          setBookings(remaining);
+        } 
+      })
+      Swal.fire({
+        title: "Confirmed!",
+        text: "Your Service has been Confirmed",
+        icon: "success"
+      });
+    }
+  });
+}
+  
+
+  
   return (
     <div>
       <div className="w-full lg:h-[500px] h-[400px] relative rounded-xl scroll-smooth my-10">
@@ -98,6 +135,7 @@ const MyBookings = () => {
                           key={booking._id}
                           booking={booking}
                           handleDelete={handleDelete}
+                          handleBookingConfirm={handleBookingConfirm}
                         ></BookingRow>
                       ))}
                     </tbody>
