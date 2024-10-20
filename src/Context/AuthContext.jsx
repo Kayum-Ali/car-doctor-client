@@ -7,6 +7,7 @@ import app from "../firebase/firebase.config";
 
 
 export const AuthCoontext = createContext();
+
 const auth= getAuth(app)
 const googleProvider = new GoogleAuthProvider()
 

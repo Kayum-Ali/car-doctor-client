@@ -1,8 +1,9 @@
-import { useContext } from "react";
+// import { useContext } from "react";
 import {  useLoaderData, useNavigate } from "react-router-dom";
-import { AuthCoontext } from "../../Context/AuthContext";
+// import { AuthCoontext } from "../../Context/AuthContext";
 import Swal from "sweetalert2";
 import useAxiosSecure from "../../hooks/useAxiosSecure";
+import useAuth from "../../hooks/useAuth";
 
 const Chekout = () => {
   const service = useLoaderData();
@@ -16,7 +17,8 @@ const Chekout = () => {
     clipPath: "polygon(18% 81%, 79% 81%, 99% 100%, 0% 100%)",
   };
 
-  const {user} = useContext(AuthCoontext)
+  // const {user} = useContext(AuthCoontext)
+  const {user} = useAuth()
   const axiosSecure = useAxiosSecure()
 
   const handleSubmit = (e) => {

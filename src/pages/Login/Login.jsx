@@ -1,11 +1,12 @@
-import { useContext } from "react";
+// import { useContext } from "react";
 import { Link, useLocation, useNavigate,  } from "react-router-dom";
 import './Login.css'
-import { AuthCoontext } from "../../Context/AuthContext";
+// import { AuthCoontext } from "../../Context/AuthContext";
 import Swal from "sweetalert2";
 
 import { FcGoogle } from "react-icons/fc";
 import { VscGithubInverted } from "react-icons/vsc";
+import useAuth from "../../hooks/useAuth";
 // import axios from "axios";
 // import axios from "axios";
 
@@ -19,7 +20,8 @@ const Login = () => {
     const from = location?.state ? location?.state : "/";
   
 
-    const {signIn, googleLogin,githubLogin} = useContext(AuthCoontext)
+    // const {signIn, googleLogin,githubLogin} = useContext(AuthCoontext)
+    const {signIn, googleLogin,githubLogin} = useAuth()
 
     const handleLogin = (e)=>{
         e.preventDefault();
@@ -39,7 +41,7 @@ const Login = () => {
                 //    }
                 // })
                 
-                    navigate(from);
+            navigate(from);
           
             let timerInterval;
             Swal.fire({

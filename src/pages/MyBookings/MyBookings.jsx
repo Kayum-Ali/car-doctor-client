@@ -1,15 +1,16 @@
 
-import { useContext, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import Swal from "sweetalert2";
-import { AuthCoontext } from "../../Context/AuthContext";
+// import { AuthCoontext } from "../../Context/AuthContext";
 import BookingRow from "./BookingRow";
 import useAxiosSecure from "../../hooks/useAxiosSecure";
+import useAuth from "../../hooks/useAuth";
 
 const MyBookings = () => {
   const axoisSecure = useAxiosSecure();
   const img =
     "https://res.cloudinary.com/dqescabbl/image/upload/v1726651366/4_ksehgy.jpg";
-  const { user } = useContext(AuthCoontext);
+  const { user } = useAuth()
   const [bookings, setBookings] = useState([]);
   const url = `/bookings?email=${user?.email}`
 
