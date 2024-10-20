@@ -17,7 +17,7 @@ const MyBookings = () => {
   useEffect(() => {
     axoisSecure.get(url)
     .then(res => {
-      console.log(res.data)
+      // console.log(res.data)
       setBookings(res.data);
     });
   
