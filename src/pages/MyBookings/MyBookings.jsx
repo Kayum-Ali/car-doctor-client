@@ -1,24 +1,26 @@
+
 import { useContext, useEffect, useState } from "react";
+import Swal from "sweetalert2";
 import { AuthCoontext } from "../../Context/AuthContext";
 import BookingRow from "./BookingRow";
-import Swal from "sweetalert2";
-import axios from "axios";
+import useAxiosSecure from "../../hooks/useAxiosSecure";
 
 const MyBookings = () => {
+  const axoisSecure = useAxiosSecure();
   const img =
     "https://res.cloudinary.com/dqescabbl/image/upload/v1726651366/4_ksehgy.jpg";
   const { user } = useContext(AuthCoontext);
   const [bookings, setBookings] = useState([]);
-  const url = `http://localhost:5000/bookings?email=${user?.email}`
+  const url = `/bookings?email=${user?.email}`
 
   useEffect(() => {
-    axios.get(url, { withCredentials: true})
+    axoisSecure.get(url)
     .then(res => {
       console.log(res.data)
       setBookings(res.data);
     });
   
-  }, [url]);
+  }, [url,axoisSecure]);
 
   const style = {
     backgroundColor: "red",
@@ -36,12 +38,9 @@ const MyBookings = () => {
       confirmButtonText: "Yes, delete it!",
     }).then((result) => {
       if (result.isConfirmed) {
-        fetch(`http://localhost:5000/bookings/${id}`, {
-          method: "DELETE",
-        })
-          .then((res) => res.json())
+        axoisSecure.delete(`/bookings/${id}`)
           .then((data) => {
-            if (data.deletedCount > 0) {
+            if (data.data.deletedCount > 0) {
               const remaining = bookings.filter(
                 (booking) => booking._id !== id
               );
@@ -69,15 +68,10 @@ const handleBookingConfirm = (id) =>{
     confirmButtonText: "Confirmed"
   }).then((result) => {
     if (result.isConfirmed) {
-      fetch(`http://localhost:5000/bookings/${id}`, {
-        method: "PATCH",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ status: 'Confirm' }),
-      })
-      .then(res => res.json())
+      axoisSecure.patch(`/bookings/${id}`, { status: 'Confirm' })
       .then(data => {
         console.log(data)
-        if (data.modifiedCount > 0) {
+        if (data.data.modifiedCount > 0) {
           const remaining = bookings.map(booking => booking._id === id? {...booking, status: 'Confirm' } : booking)
           setBookings(remaining);
         } 

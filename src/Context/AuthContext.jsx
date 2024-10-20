@@ -1,7 +1,8 @@
 import { createUserWithEmailAndPassword, getAuth, GithubAuthProvider, GoogleAuthProvider, onAuthStateChanged, signInWithEmailAndPassword, signInWithPopup, signOut } from "firebase/auth";
+import PropTypes from 'prop-types';
 import { createContext, useEffect, useState } from "react";
 import app from "../firebase/firebase.config";
-import PropTypes from 'prop-types'; 
+
 
 
 
@@ -44,24 +45,31 @@ const AuthContext = ({children}) => {
 
     useEffect(()=>{
         const unSubscriber =   onAuthStateChanged(auth, currentUser =>{
-            // const userEmail = currentUser?.email || user?.email ;
-            // const loggedUser = {email: userEmail}
+            const userEmail = currentUser?.email || user?.email ;
+            const loggedUser = {email: userEmail}
             setUser(currentUser)
-            // console.log('currnet user', currentUser)
+            if(currentUser){
+                fetch("http://localhost:7001/jwt",{
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(loggedUser),
+                    credentials: 'include'
+                },{withCredentials: true})
+                .then(res=> res.json())
+                .then(ds=> console.log(ds))
+            }
+            
+            else{
+                fetch("http://localhost:7001/logout",{
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(loggedUser),
+                    credentials: 'include'
+                },{withCredentials: true})
+                .then(res=> res.json())
+                .then(ds=> console.log(ds))
+            }
             setLoading(false)
-        //     if(currentUser){
-        //         axios.post("http://localhost:5000/jwt", loggedUser, {withCreadentials: true})
-        //         .then(res=>{
-        //             console.log('token res', res.data)
-        //         })
-        //     }
-        //     else{
-        //         axios.post("http://localhost:5000/logout", loggedUser, {withCreadentials: true})
-        //         .then(res=>{
-        //             console.log('token delete', res.data)
-
-        //         })
-        //     }
         })
         return ()=>{
             return unSubscriber()

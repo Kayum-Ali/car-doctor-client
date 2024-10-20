@@ -2,6 +2,7 @@ import { useContext } from "react";
 import {  useLoaderData, useNavigate } from "react-router-dom";
 import { AuthCoontext } from "../../Context/AuthContext";
 import Swal from "sweetalert2";
+import useAxiosSecure from "../../hooks/useAxiosSecure";
 
 const Chekout = () => {
   const service = useLoaderData();
@@ -16,6 +17,7 @@ const Chekout = () => {
   };
 
   const {user} = useContext(AuthCoontext)
+  const axiosSecure = useAxiosSecure()
 
   const handleSubmit = (e) => {
     e.preventDefault()
@@ -33,16 +35,9 @@ const Chekout = () => {
       service_id : service._id,
       price: service.price
     }
-    fetch('http://localhost:5000/bookings', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify(order)
-    })
-    .then(res => res.json())
+    axiosSecure.post('/bookings', order)
     .then(data => {
-        if(data.insertedId){
+        if(data.data.insertedId){
           Swal.fire({
             title: `${service.title}`,
             text: "Order Successfully Added to Bookings",
@@ -56,7 +51,6 @@ const Chekout = () => {
     })
 
   }
-console.log(service)
   return (
     <div className="p-3">
        

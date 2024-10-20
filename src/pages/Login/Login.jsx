@@ -6,7 +6,8 @@ import Swal from "sweetalert2";
 
 import { FcGoogle } from "react-icons/fc";
 import { VscGithubInverted } from "react-icons/vsc";
-import axios from "axios";
+// import axios from "axios";
+// import axios from "axios";
 
 
 const Login = () => {
@@ -30,15 +31,15 @@ const Login = () => {
         .then(() =>{
           
             form.reset()
-            const user = email
+            // const user = email
             // get access token from server
-            axios.post('http://localhost:5000/jwt', {user}, {withCredentials: true})
-            .then(res => {
-               if(res.data.success){
-                navigate(from);
-               }
-            })
-           
+            // axios.post('http://localhost:5000/jwt', {user}, {withCredentials: true})
+            // .then(res => {
+            //    if(res.data.success){
+                //    }
+                // })
+                
+                    navigate(from);
           
             let timerInterval;
             Swal.fire({
@@ -71,16 +72,16 @@ const Login = () => {
     const handleGoogleLogin = ()=>{
         googleLogin()
        .then(result=>{
-        const user = result?.user?.email
-        axios.post('http://localhost:5000/jwt', {user}, {withCredentials: true})
-        .then(res => {
-           if(res.data.success){
-            navigate(from);
-           }
-        })
+        // const user = result?.user?.email
+        // axios.post('http://localhost:5000/jwt', {user}, {withCredentials: true})
+        // .then(res => {
+        //    if(res.data.success){
+        //     navigate(from);
+        //    }
+        // })
            if(result.user){
            
-                // navigate(from);
+                navigate(from);
             
            
              Swal.fire({
@@ -100,15 +101,15 @@ const Login = () => {
 
         githubLogin()
         .then(result=>{
-            const user = result?.user?.email
-            axios.post('http://localhost:5000/jwt', {user}, {withCredentials: true})
-            .then(res => {
-               if(res.data.success){
-                navigate(from);
-               }
-            })
+            // const user = result?.user?.email
+            // axios.post('http://localhost:5000/jwt', {user}, {withCredentials: true})
+            // .then(res => {
+            //    if(res.data.success){
+            //     navigate(from);
+            //    }
+            // })
             if(result.user){
-                // navigate(from);
+                navigate(from);
                 Swal.fire({
                     title: "Login Successfully",
                     html: "I will close in <b></b> milliseconds.",

@@ -1,20 +1,20 @@
-import { useEffect } from "react";
-import { useState } from "react";
-import ServiceCard from "./ServiceCard";
+import { useEffect, useState } from "react";
 import { GrSchedulePlay } from "react-icons/gr";
+import ServiceCard from "./ServiceCard";
 
 import { FcMissedCall } from "react-icons/fc";
 import { GrLocation } from "react-icons/gr";
+import useAxiosSecure from "../../../hooks/useAxiosSecure";
 
 
 
 const Services = () => {
+    const axoisSecure = useAxiosSecure()
     const [services, setServices] = useState([]);
     useEffect(() => {
-        fetch('http://localhost:5000/services')
-            .then(res => res.json())
-            .then(data => setServices(data))
-    }, [])
+        axoisSecure.get('/services')
+            .then(data => setServices(data.data))
+    }, [axoisSecure])
     return (
         <div className="mt-24">
             <hr className="my-3" />
